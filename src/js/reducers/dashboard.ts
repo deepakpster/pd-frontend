@@ -1,10 +1,12 @@
+import {ACTIONTYPE} from "./../types/actionTypes"
+
 const initialState = {
     loading: false,
     statistics:[],
     error:null
 }
   
-export default function dashboardReducer(state = initialState, action = {}) {
+export default function dashboardReducer(state: typeof initialState = initialState, action:ACTIONTYPE) {
     switch (action.type) {
         case 'FETCH_COVID_DATA':
             return {...initialState, loading: true}

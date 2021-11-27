@@ -1,10 +1,15 @@
-import { all, call, put, takeLatest } from "redux-saga/effects";
+import * as Effects from "redux-saga/effects";
 import { fetchCovidStats } from "../api";
+
+const call: any = Effects.call;
+const all: any = Effects.all;
+const put: any = Effects.put;
+const takeLatest: any = Effects.takeLatest;
 
 import {
 	fetchCovidDataSuccess,
 	fetchCovidDataFailure,
-} from "../actions/dashboardActions.js";
+} from "../actions/dashboardActions";
 
 function* fetchCovidDataSaga() {
 	try {
