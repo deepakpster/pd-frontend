@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
 	entry: {
-		app: "./src/js/index.jsx",
+		app: "./src/js/index.tsx",
 	},
 	output: {
 		path: path.resolve(__dirname, "dist"),
@@ -16,13 +16,18 @@ const config = {
 		clean: true,
 	},
 	resolve: {
-		extensions: [".js", ".jsx"],
+		extensions: [".tsx", ".ts", ".js", ".jsx"],
 	},
 	devServer: {
 		historyApiFallback: true,
 	},
 	module: {
 		rules: [
+			{
+				test: /\.tsx?$/,
+				use: "ts-loader",
+				exclude: /node_modules/,
+			},
 			{
 				test: /\.jsx?$/,
 				include: path.resolve(__dirname, "src"),
@@ -127,7 +132,7 @@ const config = {
 
 module.exports = (env, argv) => {
 	if (argv.mode === "development") {
-		config.devtool = "source-map";
+		config.devtool = "inline-source-map";
 		config.performance = {
 			hints: false,
 		};

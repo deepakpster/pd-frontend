@@ -7,7 +7,6 @@ import { store, history } from "./store";
 import App from "./containers/App";
 import "../scss/main.scss";
 
-
 ReactDOM.render(
 	<Provider store={store}>
 		<Router history={history}>
