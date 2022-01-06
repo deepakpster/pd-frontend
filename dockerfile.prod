@@ -1,0 +1,25 @@
+# pull official base image
+FROM node:14-alpine as build
+
+# set working directory
+WORKDIR /app
+
+# install app dependencies
+COPY package*.json ./
+
+# add app
+COPY . ./
+
+RUN npm install
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# start app
+CMD ["npm", "run", "build"]
+
+# production environment
+FROM nginx:stable-alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
