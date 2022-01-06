@@ -87,7 +87,7 @@ your preferred browser.
 For production environment...
 ```sh
 cd pd-frontend
-docker build -f dockerfile -t pd-frontend:prod .
+docker build -f dockerfile.prod -t pd-frontend:prod .
 ```
 This will create the production version of pd-frontend image with dev tag and pull in the necessary dependencies.
 
