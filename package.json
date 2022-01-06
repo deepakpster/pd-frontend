@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "webpack-dashboard -- webpack-dev-server --mode production  --hot",
+    "start": "webpack-dashboard -- webpack-dev-server --mode development  --hot",
     "dev": "webpack-dev-server --mode development --hot",
     "watch": "webpack watch",
     "build": "webpack --mode production --progress"
