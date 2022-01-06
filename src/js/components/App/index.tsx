@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Line from "./../Charts/Line";
 import styles from './styles.scss';
 
 export default function App(props) {
@@ -13,7 +14,14 @@ export default function App(props) {
       <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Launch demo modal
       </button>
-
+      <div className="row m-2">
+        <div className="col-sm-6">
+          <Line/>
+        </div>
+        <div className="col-sm-6">
+          <Line/>
+        </div>
+      </div>
       <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
@@ -32,13 +40,15 @@ export default function App(props) {
         </div>
       </div>
     {
-      (statistics.length > 0) ? <div className="row m-auto justify-content-center">
+      (statistics.length > 0) ? <div className="row">
       {
         statistics.map((s,sIdx)=>{
-          return <div key={`c-${sIdx}`} className="card col-md-5 m-2">
-              <div className="card-header">{s.state_name || 'India (All States)'}</div>
+          return <div key={`c-${sIdx}`} className="col-md-3">
+            <div className="card">
+            <div className="card-header">{s.state_name || 'India (All States)'}</div>
+            <div className="card-body">
               <ul className="list-group list-group-flush">
-              <li className="list-group-item">Active(Total):{s.active}</li>
+                <li className="list-group-item">Active(Total):{s.active}</li>
                 <li className="list-group-item">Active(New):{s.new_active}</li>
                 <li className="list-group-item">Positive(Total):{s.positive}</li>
                 <li className="list-group-item">Positive(New):{s.new_positive}</li>
@@ -48,12 +58,13 @@ export default function App(props) {
                 <li className="list-group-item">Death(New):{s.new_death}</li>
               </ul>
             </div>
+            </div>
+          </div>
         })
       }
       </div> : <div >
         <p>Loading...</p>
       </div>
     }
-    
   </div>);
 }
