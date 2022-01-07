@@ -42,12 +42,21 @@ npm i
 npm run dev
 ```
 
+Verify the development server running by navigating to your local server address in
+your preferred browser.
+
+```sh
+127.0.0.1:8080
+```
+
 For production environments...
 
 ```sh
 npm install --production
 npm run build
 ```
+
+The production static assets will be generated and placed in the folder `dist`
 
 ## Docker
 
@@ -63,7 +72,7 @@ docker build -f dockerfile -t pd-frontend:dev .
 This will create the development version of pd-frontend image with dev tag and pull in the necessary dependencies.
 
 Once done, run the Docker image and map the port to whatever you wish on
-your host. In this example, we simply map port 8000 of the host to
+your host. In this example, we simply map port 8080 of the host to
 port 8080 of the Docker:
 
 ```sh
@@ -89,7 +98,7 @@ For production environment...
 cd pd-frontend
 docker build -f dockerfile.prod -t pd-frontend:prod .
 ```
-This will create the production version of pd-frontend image with dev tag and pull in the necessary dependencies.
+This will create the production version of pd-frontend image with prod tag and pull in the necessary dependencies.
 
 Once done, run the Docker image and map the port to whatever you wish on
 your host. In this example, we simply map port 8081 of the host to
